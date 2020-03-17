@@ -1,0 +1,29 @@
+#Mnozenje preko sabiranja sa promenljivom
+
+.section .data
+	a: .long 5
+	b: .long 6
+	rez: .long 0
+
+.section .text
+.globl main
+
+main:
+	movl $5, %eax
+	movl $6, %ebx
+	
+	cmpl %eax, %ebx
+	jnb petlja
+	xchgl %eax, %ebx
+
+petlja:
+	cmpl $0, %eax
+	je kraj
+	addl %ebx, rez
+	decl %eax
+	jmp petlja
+
+kraj:
+	movl $1, %eax
+	movl $0, %ebx
+	int $0x80
