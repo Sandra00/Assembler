@@ -1,0 +1,27 @@
+#Mnozenje preko sabiranja
+
+.section .data
+
+.section .text
+.globl main
+
+main:
+	movl $5, %eax
+	movl $6, %ebx
+	movl $0, %ecx #rezultat
+	
+	cmpl %eax, %ebx #brojac ce biti manji broj
+	jnb petlja
+	xchgl %eax, %ebx
+
+petlja:
+	cmpl $0, %eax
+	je kraj
+	addl %ebx, %ecx
+	decl %eax
+	jmp petlja
+
+kraj:
+	movl $1, %eax
+	movl $0, %ebx
+	int $0x80
