@@ -1,0 +1,22 @@
+#Sabrati prvih n prirodnih brojeva
+
+.section .data
+
+.section .text
+.globl main
+
+main:
+	movl $6, %eax #n
+	movl $0, %ebx #rezultat
+
+petlja:
+	cmpl $0, %eax
+	je kraj
+	add %eax, %ebx
+	decl %eax
+	jmp petlja
+
+kraj:
+	movl $1, %eax
+	movl $0, %ebx
+	int $0x80
